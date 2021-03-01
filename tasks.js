@@ -113,6 +113,7 @@ for (let i = 0; i < a.length; i++) {
     break;
   }
 }
+// Statik, sadece ishlesin deye yazdim
 
 // Dinamik yazilan amma ishlemeyen hisse.
 for (let i = 0; i < a.length;) {
@@ -129,11 +130,29 @@ for (let i = 0; i < a.length;) {
   }
 }
 console.log(a);
+// Dinamik yazilan amma ishlemeyen hisse.
 
-// README: Bunu tək for-la və ifsiz yazmağın yolu məncə yoxdur.
-// Verilmiş array-i JS tək 1 row kimi görür, multiple row kimi görmür
-// BU ŞƏKİLDƏ:
-// a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+// Last update
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+let f = (a=[]) => {
+    let res = [];
+    for(let i = 0; i < a.length; i++){
+        let currentFifth = Math.ceil((i+1)/5);
+        console.log(currentFifth, "currentFifth");
+        let totalFifthCount = Math.ceil(a.length / 5);
+        console.log(totalFifthCount, "totalFifthCount");
+        let currentFifthResidue = (currentFifth % 2) - 1;
+        console.log(currentFifthResidue, "currentFifthResidue");
+
+        res.push(arr[((i*(currentFifth%2)) +(currentFifthResidue * (currentFifth*5)) * (currentFifth%2)) 
+        + (a.length - (5 * (totalFifthCount - currentFifth)) - (i%5)-1) * Math.abs(currentFifthResidue)]);
+    }
+    return res;
+}
+console.log(f(arr))
+// Last update
+
+// README: Mən hələ, belə google search etməmişdim :)
 
 // ===========================================================================================
 // ===========================================================================================
